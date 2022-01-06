@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+</head>
+
+<body>
+<script>
+
+
+function computerPlay()
+{
+//Make an array of the three weapons and then return computerSelection as a random selection of one of them.
+let weapons = ['rock','paper','scissors'];
+return (weapons[Math.floor(Math.random() * (3))]);
+}
+
+
+
+var playerSelection;
+var computerSelection;
+
+var computerScore=0;
+var playerScore=0;
+
+//play one round of game
+function playRound (playerSelection,computerSelection) {
+  
+    playerSelection = prompt("Please type rock, paper, or scissors.","").toLowerCase(); //ask player to choose weapon and conver to lowercase
+    computerSelection = computerPlay(); //run computerPlay for computer to select weapon
+
+if (playerSelection === "rock") {
+    if (computerSelection === "rock") {
+        console.log("Computer chose rock. It's a tie.");
+    } else if (computerSelection === "paper") {
+        console.log("Computer chose paper. You lose. Paper covers rock.");
+        computerScore++;
+    } else if (computerSelection === "scissors") {
+        console.log("Computer chose scissors. You win. Rock crushes scissors."); 
+        playerScore++;
+    }
+
+} else if (playerSelection === "paper") {
+  if (computerSelection === "rock") {
+       console.log("Computer chose rock. You win. Paper covers rock."); 
+       playerScore++;
+    } else if (computerSelection === "paper") {
+        console.log("Computer chose paper. It's a tie");
+    } else if (computerSelection === "scissors") {
+        console.log("Computer chose scissors. You lose. Scissors cut paper.");
+        computerScore++;
+    }
+
+} else if (playerSelection === "scissors") {
+    if (computerSelection === "rock") {
+       console.log("Computer chose rock. You lose. Rock crushes scissors.");
+       computerScore++;
+    } else if (computerSelection === "paper") {
+        console.log("Computer chose paper. You win. Scissors cut paper.");
+        playerScore++;
+    } else if (computerSelection === "scissors") {
+        console.log("Computer chose scissors. It's a tie");
+    }
+
+} else {
+
+    console.log("That is not a valid choice. Please try again.");
+
+}
+}
+
+
+
+
+
+//play a best out of 5 match.
+function game() {
+
+
+while (playerScore < 5 && computerScore < 5) {
+    playRound(playerSelection, computerSelection);
+        console.log(`Computer:`,computerScore,` You:`,playerScore);
+}
+
+if (playerScore >= 5) {
+        console.log("You win!");
+    } else  {
+        console.log("You lose!"); 
+    }
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+
+
+</html>
