@@ -2,14 +2,50 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title></title>
-
+<title>Rock Paper Scissors</title>
 </head>
 
 <body>
+    <div id = "heading"><h1>ROCK PAPER SCISSORS</h1></div>
+    <div id = "choose"><p>Choose your weapon.</p></div>
+<div id="buttons">
+    <button id = "rock">Rock</button>
+    <button id = "paper">Paper</button>
+    <button id = "scissors">Scissors</button>
+</div>
+
+<div id="divscore">
+</div>
+
+<div id="divfresults">
+</div>
+
+
+
+
 <script>
 
+//buttons
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
 
+//score
+const divscore = document.querySelector('#divscore');
+const pscore = document.createElement('p');
+pscore.classList.add('pscore');
+pscore.style.cssText = 'color: blue;' 
+divscore.appendChild(pscore);
+
+// final results
+const divfresults = document.querySelector('#divfresults');
+const pfresults = document.createElement('p');
+pfresults.classList.add('pfresults');
+pfresults.style.cssText = 'color: red;' 
+divfresults.appendChild(pfresults);
+
+
+//computer picks weapon
 function computerPlay()
 {
 //Make an array of the three weapons and then return computerSelection as a random selection of one of them.
@@ -17,57 +53,85 @@ let weapons = ['rock','paper','scissors'];
 return (weapons[Math.floor(Math.random() * (3))]);
 }
 
-
-
 var playerSelection;
 var computerSelection;
 
 var computerScore=0;
 var playerScore=0;
 
+
+
+
+
+
 //play one round of game
-function playRound (playerSelection,computerSelection) {
-  
-    playerSelection = prompt("Please type rock, paper, or scissors.","").toLowerCase(); //ask player to choose weapon and conver to lowercase
+buttons.addEventListener("click", function() {playRound(playerSelection,computerSelection);});
+    
+
+const playRound = function() {
+
     computerSelection = computerPlay(); //run computerPlay for computer to select weapon
 
+rock.addEventListener('click', () => {
+    playerSelection="rock";
+    console.log(playerSelection);
+});
+
+paper.addEventListener('click', () => {
+    playerSelection="paper";
+    console.log(playerSelection);
+});
+
+scissors.addEventListener('click', () => {
+    playerSelection="scissors";
+    console.log(playerSelection);
+});
+ 
 if (playerSelection === "rock") {
     if (computerSelection === "rock") {
-        console.log("Computer chose rock. It's a tie.");
+        pfresults.textContent = "Computer chose rock. It's a tie.";
+        console.log("Computer chose rock. It's a tie."); 
     } else if (computerSelection === "paper") {
-        console.log("Computer chose paper. You lose. Paper covers rock.");
+        pfresults.textContent = "Computer chose paper. You lose. Paper covers rock.";
+        console.log("Computer chose paper. You lose. Paper covers rock."); 
         computerScore++;
     } else if (computerSelection === "scissors") {
+        pfresults.textContent = "Computer chose scissors. You win. Rock crushes scissors.";
         console.log("Computer chose scissors. You win. Rock crushes scissors."); 
         playerScore++;
     }
 
 } else if (playerSelection === "paper") {
   if (computerSelection === "rock") {
-       console.log("Computer chose rock. You win. Paper covers rock."); 
+    pfresults.textContent = "Computer chose rock. You win. Paper covers rock.";
+    console.log("Computer chose rock. You win. Paper covers rock.");
        playerScore++;
     } else if (computerSelection === "paper") {
+        pfresults.textContent = "Computer chose paper. It's a tie.";
         console.log("Computer chose paper. It's a tie");
     } else if (computerSelection === "scissors") {
+        pfresults.textContent = "Computer chose scissors. You lose. Scissors cut paper.";
         console.log("Computer chose scissors. You lose. Scissors cut paper.");
         computerScore++;
     }
 
 } else if (playerSelection === "scissors") {
     if (computerSelection === "rock") {
-       console.log("Computer chose rock. You lose. Rock crushes scissors.");
-       computerScore++;
+        pfresults.textContent = "Computer chose rock. You lose. Rock crushes scissors.";
+        console.log("Computer chose rock. You lose. Rock crushes scissors.");
+        computerScore++;
     } else if (computerSelection === "paper") {
+        pfresults.textContent = "Computer chose paper. You win. Scissors cut paper.";
         console.log("Computer chose paper. You win. Scissors cut paper.");
         playerScore++;
     } else if (computerSelection === "scissors") {
-        console.log("Computer chose scissors. It's a tie");
+        pfresults.textContent = "Computer chose scissors. It's a tie";
+        console.log("Computer chose scissors. It's a tie"); 
     }
 
 } else {
 
-    console.log("That is not a valid choice. Please try again.");
-
+    pfresults.textContent = "That is not a valid choice. Please try again.";
 }
 }
 
@@ -76,20 +140,23 @@ if (playerSelection === "rock") {
 
 
 //play a best out of 5 match.
-function game() {
 
+function game() {
 
 while (playerScore < 5 && computerScore < 5) {
     playRound(playerSelection, computerSelection);
-        console.log(`Computer:`,computerScore,` You:`,playerScore);
+        console.log(`Computer: ${computerScore} You: ${playerScore}`);
+        pscore.textContent = `Computer: ${computerScore} You: ${playerScore}`;
 }
 
 if (playerScore >= 5) {
-        console.log("You win!");
+    pfresults.textContent = "You win!";
     } else  {
-        console.log("You lose!"); 
+        pfresults.textContent = "You lose!"; 
     }
 }
+  
+
 
 
 
