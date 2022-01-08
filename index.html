@@ -17,6 +17,9 @@
 <div id="divscore">
 </div>
 
+<div id="divresults">
+</div>
+
 <div id="divfresults">
 </div>
 
@@ -37,11 +40,18 @@ pscore.classList.add('pscore');
 pscore.style.cssText = 'color: blue;' 
 divscore.appendChild(pscore);
 
+//results
+const divresults = document.querySelector('#divresults');
+const presults = document.createElement('p');
+presults.classList.add('presults');
+presults.style.cssText = 'color: red;' 
+divresults.appendChild(presults);
+
 // final results
 const divfresults = document.querySelector('#divfresults');
 const pfresults = document.createElement('p');
 pfresults.classList.add('pfresults');
-pfresults.style.cssText = 'color: red;' 
+pfresults.style.cssText = 'color: green;' 
 divfresults.appendChild(pfresults);
 
 
@@ -67,11 +77,6 @@ var playerScore=0;
 //play one round of game
 buttons.addEventListener("click", function() {playRound(playerSelection,computerSelection);});
     
-
-const playRound = function() {
-
-    computerSelection = computerPlay(); //run computerPlay for computer to select weapon
-
 rock.addEventListener('click', () => {
     playerSelection="rock";
     console.log(playerSelection);
@@ -86,76 +91,86 @@ scissors.addEventListener('click', () => {
     playerSelection="scissors";
     console.log(playerSelection);
 });
+
+const playRound = function() {
+
+    computerSelection = computerPlay(); //run computerPlay for computer to select weapon
  
 if (playerSelection === "rock") {
     if (computerSelection === "rock") {
-        pfresults.textContent = "Computer chose rock. It's a tie.";
+        presults.textContent = "Computer chose rock. It's a tie.";
         console.log("Computer chose rock. It's a tie."); 
     } else if (computerSelection === "paper") {
-        pfresults.textContent = "Computer chose paper. You lose. Paper covers rock.";
+        presults.textContent = "Computer chose paper. You lose. Paper covers rock.";
         console.log("Computer chose paper. You lose. Paper covers rock."); 
         computerScore++;
     } else if (computerSelection === "scissors") {
-        pfresults.textContent = "Computer chose scissors. You win. Rock crushes scissors.";
+        presults.textContent = "Computer chose scissors. You win. Rock crushes scissors.";
         console.log("Computer chose scissors. You win. Rock crushes scissors."); 
         playerScore++;
     }
 
 } else if (playerSelection === "paper") {
   if (computerSelection === "rock") {
-    pfresults.textContent = "Computer chose rock. You win. Paper covers rock.";
+    presults.textContent = "Computer chose rock. You win. Paper covers rock.";
     console.log("Computer chose rock. You win. Paper covers rock.");
        playerScore++;
     } else if (computerSelection === "paper") {
-        pfresults.textContent = "Computer chose paper. It's a tie.";
+        presults.textContent = "Computer chose paper. It's a tie.";
         console.log("Computer chose paper. It's a tie");
     } else if (computerSelection === "scissors") {
-        pfresults.textContent = "Computer chose scissors. You lose. Scissors cut paper.";
+        presults.textContent = "Computer chose scissors. You lose. Scissors cut paper.";
         console.log("Computer chose scissors. You lose. Scissors cut paper.");
         computerScore++;
     }
 
 } else if (playerSelection === "scissors") {
     if (computerSelection === "rock") {
-        pfresults.textContent = "Computer chose rock. You lose. Rock crushes scissors.";
+        presults.textContent = "Computer chose rock. You lose. Rock crushes scissors.";
         console.log("Computer chose rock. You lose. Rock crushes scissors.");
         computerScore++;
+        console.log(`Computer: ${computerScore} You: ${playerScore}`);
+        pscore.textContent = `Computer: ${computerScore} You: ${playerScore}`;
     } else if (computerSelection === "paper") {
-        pfresults.textContent = "Computer chose paper. You win. Scissors cut paper.";
+        presults.textContent = "Computer chose paper. You win. Scissors cut paper.";
         console.log("Computer chose paper. You win. Scissors cut paper.");
         playerScore++;
+        console.log(`Computer: ${computerScore} You: ${playerScore}`);
+        pscore.textContent = `Computer: ${computerScore} You: ${playerScore}`;
     } else if (computerSelection === "scissors") {
-        pfresults.textContent = "Computer chose scissors. It's a tie";
+        presults.textContent = "Computer chose scissors. It's a tie";
         console.log("Computer chose scissors. It's a tie"); 
+ 
     }
 
 } else {
 
-    pfresults.textContent = "That is not a valid choice. Please try again.";
+    presults.textContent = "That is not a valid choice. Please try again.";
 }
-}
 
-
-
-
-
-//play a best out of 5 match.
-
-function game() {
-
-while (playerScore < 5 && computerScore < 5) {
-    playRound(playerSelection, computerSelection);
-        console.log(`Computer: ${computerScore} You: ${playerScore}`);
+if (playerScore < 5 && computerScore < 5) {
+console.log(`Computer: ${computerScore} You: ${playerScore}`);
         pscore.textContent = `Computer: ${computerScore} You: ${playerScore}`;
+        pfresults.textContent = ""; 
+
+
+} else if (playerScore >= 5) {
+    pscore.textContent = `Computer: ${computerScore} You: ${playerScore}`;
+    pfresults.textContent = "You win!";
+    computerScore = 0;
+    playerScore = 0;
+    } else  {
+        pscore.textContent = `Computer: ${computerScore} You: ${playerScore}`;
+        pfresults.textContent = "You lose!"; 
+        computerScore = 0;
+        playerScore = 0;
+    }
+
+
 }
 
-if (playerScore >= 5) {
-    pfresults.textContent = "You win!";
-    } else  {
-        pfresults.textContent = "You lose!"; 
-    }
-}
-  
+
+
 
 
 
