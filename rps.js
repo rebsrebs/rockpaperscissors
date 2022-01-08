@@ -8,21 +8,18 @@ const scissors = document.querySelector('#scissors');
 const divscore = document.querySelector('#divscore');
 const pscore = document.createElement('p');
 pscore.classList.add('pscore');
-pscore.style.cssText = 'color: blue;' 
 divscore.appendChild(pscore);
 
 //results
 const divresults = document.querySelector('#divresults');
 const presults = document.createElement('p');
 presults.classList.add('presults');
-presults.style.cssText = 'color: red;' 
 divresults.appendChild(presults);
 
 // final results
 const divfresults = document.querySelector('#divfresults');
 const pfresults = document.createElement('p');
 pfresults.classList.add('pfresults');
-pfresults.style.cssText = 'color: green;' 
 divfresults.appendChild(pfresults);
 
 
@@ -69,48 +66,48 @@ const playRound = function() {
  
 if (playerSelection === "rock") {
     if (computerSelection === "rock") {
-        presults.textContent = "Computer chose rock. It's a tie.";
+        presults.textContent = "Computer chose rock.\r\nIt's a tie.";
         console.log("Computer chose rock. It's a tie."); 
     } else if (computerSelection === "paper") {
-        presults.textContent = "Computer chose paper. You lose. Paper covers rock.";
-        console.log("Computer chose paper. You lose. Paper covers rock."); 
+        presults.textContent = "Computer chose paper.\r\nPaper covers rock.\r\nComputer got a point.";
+        console.log("Computer chose paper. Paper covers rock. Computer got a point."); 
         computerScore++;
     } else if (computerSelection === "scissors") {
-        presults.textContent = "Computer chose scissors. You win. Rock crushes scissors.";
-        console.log("Computer chose scissors. You win. Rock crushes scissors."); 
+        presults.textContent = "Computer chose scissors.\r\nRock crushes scissors.\r\nYou got a point.";
+        console.log("Computer chose scissors. Rock crushes scissors. You got a point."); 
         playerScore++;
     }
 
 } else if (playerSelection === "paper") {
   if (computerSelection === "rock") {
-    presults.textContent = "Computer chose rock. You win. Paper covers rock.";
-    console.log("Computer chose rock. You win. Paper covers rock.");
+    presults.textContent = "Computer chose rock.\r\nPaper covers rock.\r\nYou got a point.";
+    console.log("Computer chose rock.\r\nPaper covers rock.\r\nYou got a point.");
        playerScore++;
     } else if (computerSelection === "paper") {
-        presults.textContent = "Computer chose paper. It's a tie.";
-        console.log("Computer chose paper. It's a tie");
+        presults.textContent = "Computer chose paper.\r\nIt's a tie.";
+        console.log("Computer chose paper.\r\nIt's a tie");
     } else if (computerSelection === "scissors") {
-        presults.textContent = "Computer chose scissors. You lose. Scissors cut paper.";
-        console.log("Computer chose scissors. You lose. Scissors cut paper.");
+        presults.textContent = "Computer chose scissors.\r\nScissors cut paper.\r\nComputer got a point.";
+        console.log("Computer chose scissors.\r\nScissors cut paper.\r\nComputer got a point.");
         computerScore++;
     }
 
 } else if (playerSelection === "scissors") {
     if (computerSelection === "rock") {
-        presults.textContent = "Computer chose rock. You lose. Rock crushes scissors.";
-        console.log("Computer chose rock. You lose. Rock crushes scissors.");
+        presults.textContent = "Computer chose rock.\r\nRock crushes scissors.\r\nComputer got a point.";
+        console.log("Computer chose rock.\r\nRock crushes scissors.\r\nComputer got a point.");
         computerScore++;
         console.log(`Computer: ${computerScore} You: ${playerScore}`);
         pscore.textContent = `Computer: ${computerScore} You: ${playerScore}`;
     } else if (computerSelection === "paper") {
-        presults.textContent = "Computer chose paper. You win. Scissors cut paper.";
-        console.log("Computer chose paper. You win. Scissors cut paper.");
+        presults.textContent = "Computer chose paper.\r\nScissors cut paper.\r\nYou got a point.";
+        console.log("Computer chose paper.\r\nScissors cut paper.\r\nYou got a point.");
         playerScore++;
         console.log(`Computer: ${computerScore} You: ${playerScore}`);
         pscore.textContent = `Computer: ${computerScore} You: ${playerScore}`;
     } else if (computerSelection === "scissors") {
-        presults.textContent = "Computer chose scissors. It's a tie";
-        console.log("Computer chose scissors. It's a tie"); 
+        presults.textContent = "Computer chose scissors.\r\nIt's a tie";
+        console.log("Computer chose scissors.\r\nIt's a tie"); 
  
     }
 

@@ -5,48 +5,86 @@ body{
     font-family:Verdana, Tahoma, sans-serif;
     background-color: #4fe99c;
     margin:0px;
+    padding:3px;
     color:
     #6a1899;
-    font-size: 2vmin;
+    font-size: 3vmin;
 }
 
-
-.info{
-    display:flex;
-    font-size:2vmin;
+h1{
+    font-size: 6vmin;
+    margin-top:30px;
+    margin-bottom:20px
 }
 
 #heading{
-bottom-margin: 20px;
+   
+    
 }
 
 
+#intro{
+    line-height:150%;
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+  
+}
+
 #choose{
-    font-size:20px;
+    margin:0px;
+  
 
 }
 
 
 #buttons{
+    margin:0px;
 padding:5px;
 display:flex;
 }
 
 .button{
     background-color: pink;
-    margin:5px;
-}
-
-#divscore {
-    font-family:'Courier New', Courier, monospace;
+    padding:10px;
+    margin:10px;
+    font-size:3vmin;
 
 }
 
+.button:hover{
+    background-color:pink;
+}
+
+.button:active{
+background-color:yellow;
+transform: scale(1.1);
+}
+
+
+
+.pscore{
+    color:blue;
+    font-size:4vmin;
+}
+
+
+
+.presults{
+    color:red;
+    white-space: pre;
+    line-height: 150%;
+    text-align:center;
+}
 
 #divresults{
-
 }
 
+
+.pfresults{
+    color:green;
+    font-size:4vmin;
+}
 
 #divfresults{
 
