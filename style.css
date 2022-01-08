@@ -1,0 +1,53 @@
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:Verdana, Tahoma, sans-serif;
+    background-color: #4fe99c;
+    margin:0px;
+    color:
+    #6a1899;
+    font-size: 2vmin;
+}
+
+
+.info{
+    display:flex;
+    font-size:2vmin;
+}
+
+#heading{
+bottom-margin: 20px;
+}
+
+
+#choose{
+    font-size:20px;
+
+}
+
+
+#buttons{
+padding:5px;
+display:flex;
+}
+
+.button{
+    background-color: pink;
+    margin:5px;
+}
+
+#divscore {
+    font-family:'Courier New', Courier, monospace;
+
+}
+
+
+#divresults{
+
+}
+
+
+#divfresults{
+
+}
